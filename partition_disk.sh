@@ -23,5 +23,6 @@ w	# write changes to disk
 FDISK_CMDS
 
 mkfs.ext4 $13
+mkfs.fat -F32 $11
 mkswap $12
 swapon $12
