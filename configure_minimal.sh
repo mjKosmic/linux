@@ -11,11 +11,12 @@ echo "::1		localhost" >> /etc/hosts
 echo "127.0.1.1		arch.localdomain	arch" >> /etc/hosts
 
 #grub
-pacman -Sy efibootmgr dosfstools os-prober mtools grub --noconfirm
+pacman -Sy grub --noconfirm
+pacman -Sy efibootmgr dosfstools os-prober mtools --noconfirm
 mkdir -p /boot/EFI
-mkdir -p /boot/grub
+#mkdir -p /boot/grub
 mount $11 /boot/EFI
-grub-install --target=x86_64-efi --bootloader-id=grub-uefi --recheck
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 
 #install additional packages
