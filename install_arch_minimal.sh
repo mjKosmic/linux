@@ -13,7 +13,7 @@ mount $13 /mnt && mkdir /mnt/boot
 pacstrap /mnt base linux linux-firmware sudo net-tools
 genfstab -U /mnt >> /mnt/etc/fstab
 cp configure_minimal.sh /mnt/
-arch-chroot /mnt /bin/bash configure_minimal.sh 
+arch-chroot /mnt /bin/bash -c "./configure_minimal.sh $1"
 rm /mnt/configure_minimal.sh
 
 #set users last because they need user intervention

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "configuring $1" 
 ln -sF /usr/share/zoneinfo/America/Chicago /etc/localtime
 hwclock --systohc
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/g' /etc/locale.gen
@@ -10,8 +11,9 @@ echo "::1		localhost" >> /etc/hosts
 echo "127.0.1.1		arch.localdomain	arch" >> /etc/hosts
 
 #grub
-pacman -Sy efibootmgr dosfstools os-prober mtools --noconfirm
-mkdir /boot/EFI
+pacman -Sy efibootmgr dosfstools os-prober mtools grub --noconfirm
+mkdir -p /boot/EFI
+mkdir -p /boot/grub
 mount $11 /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub-uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
